@@ -4,7 +4,7 @@
       "name":"精选内容",
       "sub_button":[
         {
-          "type":"media_id",
+          "type":"view_limited",
           "name":"吃喝 • 玩乐",
           "key":"吃喝 • 玩乐",
           "media_id": "DRxJu2FnCLSyugvcvwd66xyf7KfRXsvCLrvmiUE5VG4"
@@ -37,7 +37,7 @@
           "media_id":"DRxJu2FnCLSyugvcvwd66z0SyELyiijlobDTbYZgYTw"
         },
         {
-          "type":"media_id",
+          "type":"view_limited",
           "name":"问买房置业",
           "media_id":"NzvPmN3IIKkA4tPhABF-wzTvyMBoKdw6MUN4EVSLNMH-297MuacmjgUTI86OUWDq"
         }]
