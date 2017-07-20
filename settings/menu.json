@@ -4,7 +4,7 @@
       "name":"精选内容",
       "sub_button":[
         {
-          "type":"news",
+          "type":"media_id",
           "name":"吃喝 • 玩乐",
           "key":"吃喝 • 玩乐",
           "media_id": "DRxJu2FnCLSyugvcvwd66xyf7KfRXsvCLrvmiUE5VG4"
@@ -19,7 +19,8 @@
           "type": "view",
           "name": "萌客 • 电影",
           "key":"萌客 • 电影",
-          "url": "http://mp.weixin.qq.com/s?__biz=MzI3MDA3OTU0Ng==&mid=502558686&idx=1&sn=19c749cbc5e6e0392bd4261299c93ae1&chksm=72d64c8b45a1c59dbf7b83ad87d7402bd4295dec7166c92ec7eea81b02fd4eab4d7b245b4c23&scene=18#wechat_redirect"        },
+          "url": "http://mp.weixin.qq.com/s?__biz=MzI3MDA3OTU0Ng==&mid=502558686&idx=1&sn=19c749cbc5e6e0392bd4261299c93ae1&chksm=72d64c8b45a1c59dbf7b83ad87d7402bd4295dec7166c92ec7eea81b02fd4eab4d7b245b4c23&scene=18#wechat_redirect"
+        },
         {
           "type": "view",
           "name": "萌客 • 百科",
@@ -72,8 +73,5 @@
           }
         }]
     }
-  ],
-  "clickEvent": {
-
-  }
+  ]
 }
