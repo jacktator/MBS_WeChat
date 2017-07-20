@@ -1,0 +1,79 @@
+{
+  "buttons": [
+    {
+      "name":"精选内容",
+      "sub_button":[
+        {
+          "type":"news",
+          "name":"吃喝 • 玩乐",
+          "key":"吃喝 • 玩乐",
+          "media_id": "DRxJu2FnCLSyugvcvwd66xyf7KfRXsvCLrvmiUE5VG4"
+        },
+        {
+          "type":"view",
+          "name":"时尚 • 购物",
+          "key":"时尚 • 购物",
+          "url": "http://mp.weixin.qq.com/s?__biz=MzI3MDA3OTU0Ng==&mid=502558689&idx=1&sn=e432e5a52ee77e0599438c7430f03b89&chksm=72d64cb445a1c5a2d1ea43f6072e45a66c47a52552d40dc430db0674cf50ab23fef9fc7d0f6e&scene=18#wechat_redirect"
+        },
+        {
+          "type": "view",
+          "name": "萌客 • 电影",
+          "key":"萌客 • 电影",
+          "url": "http://mp.weixin.qq.com/s?__biz=MzI3MDA3OTU0Ng==&mid=502558686&idx=1&sn=19c749cbc5e6e0392bd4261299c93ae1&chksm=72d64c8b45a1c59dbf7b83ad87d7402bd4295dec7166c92ec7eea81b02fd4eab4d7b245b4c23&scene=18#wechat_redirect"        },
+        {
+          "type": "view",
+          "name": "萌客 • 百科",
+          "key":"萌客 • 百科",
+          "url": "http://mp.weixin.qq.com/s?__biz=MzI3MDA3OTU0Ng==&mid=502559000&idx=1&sn=718f79a3c2a5c353ded2adc68796b85a&chksm=72d6524d45a1db5be7d6f4abf8fbc75fe15d230bcc035d4bce8f1eae12e65c76fdaa3b77f60f&scene=18#wechat_redirect"
+        }]
+    },
+    {
+      "name":"神秘机构",
+      "sub_button":[
+        {
+          "type":"media_id",
+          "name":"问留学移民",
+          "media_id":"DRxJu2FnCLSyugvcvwd66z0SyELyiijlobDTbYZgYTw"
+        },
+        {
+          "type":"media_id",
+          "name":"问买房置业",
+          "media_id":"NzvPmN3IIKkA4tPhABF-wzTvyMBoKdw6MUN4EVSLNMH-297MuacmjgUTI86OUWDq"
+        }]
+    },
+    {
+      "name":"萌博士",
+      "sub_button":[
+        {
+          "type":"text",
+          "name":"关于我们",
+          "key":"关于我们",
+          "reply": {
+            "type": "text",
+            "content": "萌博士平台是一个活力满满，年轻有爱的多元化信息平台/可爱\n我们为众多粉丝提供了朋友圈里的互助信息，萌客订阅号的优质资讯，网站的生活分类信息以及丰富多彩的线下活动/示爱/示爱/示爱\n\n海外生活，必备工具"
+          }
+        },
+        {
+          "type":"text",
+          "name":"合作请戳",
+          "key":"合作请戳",
+          "reply": {
+            "type": "text",
+            "content": "商务合作，请联系微信号 Lorraine219 或 Jenna_X"
+          }
+        },
+        {
+          "type":"text",
+          "name":"生活服务",
+          "key":"生活服务",
+          "reply": {
+            "type": "text",
+            "content": "萌博士旗下目前拥有10个粉丝破千的微信号/拥抱/拥抱/拥抱\n免费发布各种租房，求职，卖闲置，找对象等求助信息\n\n打开微信搜索框，搜索“萌博士互助中心“，找到你朋友圈的贴心小助理，如果没有找到的话，请添加微信  ”Drmeng9 ””Drmeng10 ”随时互动"
+          }
+        }]
+    }
+  ],
+  "clickEvent": {
+
+  }
+}
