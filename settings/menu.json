@@ -1,77 +1,134 @@
 {
   "buttons": [
     {
-      "name":"精选内容",
+      "name":"服务介绍",
       "sub_button":[
         {
-          "type":"view_limited",
-          "name":"吃喝 • 玩乐",
-          "key":"吃喝 • 玩乐",
-          "media_id": "DRxJu2FnCLSyugvcvwd66xyf7KfRXsvCLrvmiUE5VG4"
+          "type":"click",
+          "name":"品牌设计",
+          "key":"品牌设计",
+          "reply": {
+            "type": "text",
+            "content": "我们提供全套的品牌设计，包括:\n\n纯Logo：彩色，单色的Logo\n品牌版：Logo，名片，企业文件夹，信纸信封，定制文具等\n至尊版：电子名片，邮件签名，二维码，企业官网，微信公众号等\n\n更多详情，欢迎咨询客服~\n\n邮件：hi@sk8.tech\n网址：https://sk8.tech\n微博：weibo.com/sk8tech\n←点击左边就可以联系客服了哦~"
+          }
+        },
+        {
+          "type":"click",
+          "name":"官网建设",
+          "key":"官网建设",
+          "reply": {
+            "type": "text",
+            "content": "信息时代，没官网怎么行？我们提供全套的管网设计以及开发，包括:\n\nPC版：15页网站设计+开发，SEO优化，可选博客，论坛等功能\n手机版：15页网站设计+开发，SEO优化，可选博客，论坛等功能\n商城：各类商城或微店\n\n更多详情，欢迎咨询客服~\n\n邮件：hi@sk8.tech\n网址：https://sk8.tech\n微博：weibo.com/sk8tech\n←点击左边就可以联系客服了哦~"
+          }
+        },
+        {
+          "type":"click",
+          "name":"App开发",
+          "key":"App开发",
+          "reply": {
+            "type": "text",
+            "content": "我的App我做主！告诉我们你的想法，无论复杂简单，我们都能替你做出来！包括：\n\n原生App：可以在App Store中下载到的App\n网页App：可以通过二维码扫一扫即用的App\n小程序：微信生态圈中一次崭新尝试\n\n更多详情，欢迎咨询客服~\n\n邮件：hi@sk8.tech\n网址：https://sk8.tech\n微博：weibo.com/sk8tech\n←点击左边就可以联系客服了哦~"
+          }
+        },
+        {
+          "type":"click",
+          "name":"线上推广",
+          "key":"线上推广",
+          "reply": {
+            "type": "text",
+            "content": "让你的顾客找到你，不再擦肩而过！我们提供在线推广服务，包括：\n\n谷歌百度排名：让你的网站出现在第一页\n点击付费广告：付费将用户引流到你的网站\nASO：App Store 排名优化\n微信代运营：公众号代运营\n外媒代运营：Facebook，Twitter，Google+代运营\n\n更多详情，欢迎咨询客服~\n\n邮件：hi@sk8.tech\n网址：https://sk8.tech\n微博：weibo.com/sk8tech\n←点击左边就可以联系客服了哦~"
+          }
+        },
+        {
+          "type":"click",
+          "name":"报个价呗",
+          "key":"报个价呗",
+          "reply": {
+            "type": "text",
+            "content": "感谢您的兴趣~我们特别高兴能够成为你的左膀右臂！\n\n由于每个项目的范围，耗时，都不一样，报价得视项目详细而定，请联系我们热气的客服，我们将第一时间为您报价！\n\n只需复制黏贴以下文字，回复客服，我们将在48小时内给您一个报价~\n\n更多详情，欢迎咨询客服~\n\n邮件：hi@sk8.tech\n网址：https://sk8.tech\n微博：weibo.com/sk8tech\n\n←点击左边就可以联系客服了哦~亲~\n\n项目名称：\n联系邮箱：\n项目类型：设计/网站/App/微信/推广\n项目简介："
+          }
+        }]
+    },
+    {
+      "name":"精品案例",
+      "sub_button":[
+        {
+          "type":"view",
+          "name":"澳蕊源生坊",
+          "url":"http://www.auralivingshop.com/waptouch/"
         },
         {
           "type":"view",
-          "name":"时尚 • 购物",
-          "key":"时尚 • 购物",
-          "url": "http://mp.weixin.qq.com/s?__biz=MzI3MDA3OTU0Ng==&mid=502558689&idx=1&sn=e432e5a52ee77e0599438c7430f03b89&chksm=72d64cb445a1c5a2d1ea43f6072e45a66c47a52552d40dc430db0674cf50ab23fef9fc7d0f6e&scene=18#wechat_redirect"
+          "name":"生意达人",
+          "url":"http://trademybusiness.com/"
         },
         {
-          "type": "view",
-          "name": "萌客 • 电影",
-          "key":"萌客 • 电影",
-          "url": "http://mp.weixin.qq.com/s?__biz=MzI3MDA3OTU0Ng==&mid=502558686&idx=1&sn=19c749cbc5e6e0392bd4261299c93ae1&chksm=72d64c8b45a1c59dbf7b83ad87d7402bd4295dec7166c92ec7eea81b02fd4eab4d7b245b4c23&scene=18#wechat_redirect"
+          "type":"view",
+          "name":"Unichi",
+          "url":"https://unichi.com.au"
         },
         {
-          "type": "view",
-          "name": "萌客 • 百科",
-          "key":"萌客 • 百科",
-          "url": "http://mp.weixin.qq.com/s?__biz=MzI3MDA3OTU0Ng==&mid=502559000&idx=1&sn=718f79a3c2a5c353ded2adc68796b85a&chksm=72d6524d45a1db5be7d6f4abf8fbc75fe15d230bcc035d4bce8f1eae12e65c76fdaa3b77f60f&scene=18#wechat_redirect"
+          "type":"view",
+          "name":"Sundale",
+          "url":"http://sundaledevelopments.com.au/"
+        },
+        {
+          "type":"view",
+          "name":"SpecEvent",
+          "url":"http://specevent.com.au/"
         }]
     },
     {
-      "name":"神秘机构",
+      "name":"关于我们",
       "sub_button":[
         {
-          "type":"media_id",
-          "name":"问留学移民",
-          "media_id":"DRxJu2FnCLSyugvcvwd66z0SyELyiijlobDTbYZgYTw"
-        },
-        {
-          "type":"view_limited",
-          "name":"问买房置业",
-          "media_id":"NzvPmN3IIKkA4tPhABF-wzTvyMBoKdw6MUN4EVSLNMH-297MuacmjgUTI86OUWDq"
-        }]
-    },
-    {
-      "name":"萌博士",
-      "sub_button":[
-        {
-          "type":"text",
-          "name":"关于我们",
-          "key":"关于我们",
+          "type":"click",
+          "name":"企业介绍",
+          "key":"企业介绍",
           "reply": {
             "type": "text",
-            "content": "萌博士平台是一个活力满满，年轻有爱的多元化信息平台/可爱\n我们为众多粉丝提供了朋友圈里的互助信息，萌客订阅号的优质资讯，网站的生活分类信息以及丰富多彩的线下活动/示爱/示爱/示爱\n\n海外生活，必备工具"
+            "content": "SK8科技于13年创立在新加坡。4年内，我们跨越了3个国家，坐落于澳洲悉尼市中心及上海杨浦。\n\nSK8科技是一家跨国 IT 开发以及技术孵化公司，我们致力于为中小型企业，尤其是初创团队，提供一站式的技术服务。\n\n我们的服务包括品牌设计，官网建站，App开发，以及在线推广。\n\n对有潜力的初创公司，我们也提供技术孵化服务，为创业加速。"
           }
         },
         {
-          "type":"text",
-          "name":"合作请戳",
-          "key":"合作请戳",
+          "type":"click",
+          "name":"价值使命",
+          "key":"价值使命",
           "reply": {
             "type": "text",
-            "content": "商务合作，请联系微信号 Lorraine219 或 Jenna_X"
+            "content": "初创团队往往需要最专业的团队，以最快的速度 完成从产品到推广。作为创业先驱，我们深刻体会初创公司的辛苦。\n\n我们立志为中小企业提供一站式技术服务。助力创业，技术孵化，荣辱与共，共创辉煌。"
           }
         },
         {
-          "type":"text",
-          "name":"生活服务",
-          "key":"生活服务",
+          "type":"click",
+          "name":"团队介绍",
+          "key":"团队介绍",
           "reply": {
             "type": "text",
-            "content": "萌博士旗下目前拥有10个粉丝破千的微信号/拥抱/拥抱/拥抱\n免费发布各种租房，求职，卖闲置，找对象等求助信息\n\n打开微信搜索框，搜索“萌博士互助中心“，找到你朋友圈的贴心小助理，如果没有找到的话，请添加微信  ”Drmeng9 ””Drmeng10 ”随时互动"
+            "content": "工匠精神-我们的团队有着各式各样的人才大牛，包括商务分析，设计，开发，测试，市场 等。\n\n我们注重人才培养，并且提供学习条件。我们重视团建，因为一流的团队才能雕琢 一流的作品。\n\n同时，我们随时欢迎人才加入。请直接联系小编，或者将简历发至 hi@sk8.tech"
+          }
+        },
+        {
+          "type":"click",
+          "name":"技术孵化",
+          "key":"技术孵化",
+          "reply": {
+            "type": "text",
+            "content": "对于有潜力的互联网项目，我们将以“技术孵化”的形式，以一定比例参股，并且提供\n1. 专业的创业导师\n2. 精锐的技术团队\n3. 轻松的办公氛围\n4. 丰富的运营经验\n截止17年2月，SK8科技已“技术孵化”海内外4个互联网公司，总估值超过3500万人民币。"
+          }
+        },
+        {
+          "type":"click",
+          "name":"联系我们",
+          "key":"联系我们",
+          "reply": {
+            "type": "text",
+            "content": "SK8科技\n邮件：hi@sk8.tech\n网址：https://sk8.tech\n微博：weibo.com/sk8tech\n←点击左边就可以联系客服了哦~"
           }
         }]
     }
-  ]
+  ],
+  "clickEvent": {
+
+  }
 }
