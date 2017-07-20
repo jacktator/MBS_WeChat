@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e5a6217c-54a1-4739-b340-8d6ac041acc8" name="Default" comment="fix app.js">
+    <list default="true" id="e5a6217c-54a1-4739-b340-8d6ac041acc8" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/settings/menu.json" afterPath="$PROJECT_DIR$/settings/menu.json" />
     </list>
@@ -47,8 +47,8 @@
       <file leaf-file-name="menu.json" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/settings/menu.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
+            <state relative-caret-position="465">
+              <caret line="31" column="20" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -231,7 +231,7 @@
       <updated>1500523857886</updated>
       <workItem from="1500523864981" duration="263000" />
       <workItem from="1500526621744" duration="6000" />
-      <workItem from="1500526632928" duration="9751000" />
+      <workItem from="1500526632928" duration="10162000" />
     </task>
     <task id="LOCAL-00001" summary="add .gitignore">
       <created>1500527202138</created>
@@ -275,11 +275,25 @@
       <option name="project" value="LOCAL" />
       <updated>1500538229029</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="fix app.js">
+      <created>1500538522848</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1500538522848</updated>
+    </task>
+    <task id="LOCAL-00008" summary="menu">
+      <created>1500538765382</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1500538765383</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10020000" />
+    <option name="totallyTimeSpent" value="10431000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1366" y="-312" width="1920" height="1080" extended-state="0" />
@@ -313,11 +327,12 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="add .gitignore" />
-    <MESSAGE value="fix app.js" />
     <MESSAGE value="create menu" />
     <MESSAGE value="fix reply" />
     <MESSAGE value="fix menu" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix menu" />
+    <MESSAGE value="fix app.js" />
+    <MESSAGE value="menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="menu" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -406,8 +421,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/settings/menu.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
+        <state relative-caret-position="465">
+          <caret line="31" column="20" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
           <folding />
         </state>
       </provider>
