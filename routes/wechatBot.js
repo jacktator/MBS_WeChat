@@ -43,7 +43,7 @@ router.use('/', wechat(config).text(function(message, req, res, next) {
     default:
       res.reply({
         type: "text",
-        content: '服务器挂掉了，你的要求暂时无法满足……'
+        content: '服务器挂掉了，你的要求暂时无法满足'
       });
       break;
   }
