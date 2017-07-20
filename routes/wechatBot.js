@@ -198,7 +198,33 @@ router.use('/', wechat(config).text(function(message, req, res, next) {
   // Longitude: '113.352425',
   // Precision: '119.385040',
   // MsgId: '5837397520665436492' }
-  // TODO
+    //CLICK事件响应
+    //@author Yitta
+    //@see https://mp.weixin.qq.com/wiki/7/9f89d962eba4c5924ed95b513ba69d9b.html
+    if (message.Event == 'CLICK') {
+
+        console.log("收到click事件 ", message.EventKey);
+
+        var eventKey = message.EventKey;
+
+        var primaryKey,
+            secondaryKey;
+
+        for (primaryKey in wechatMenu.buttons) {
+
+            var primaryButton = wechatMenu.buttons[primaryKey];
+
+            for (secondaryKey in primaryButton.sub_button) {
+
+                var secondaryButton = primaryButton.sub_button[secondaryKey];
+
+                if (eventKey == secondaryButton.key) {
+                    res.reply(secondaryButton.reply);
+
+                }
+            }
+        }
+    }
 }).device_text(function(message, req, res, next) {
   // message为设备文本消息内容
   // { ToUserName: 'gh_d3e07d51b513',
