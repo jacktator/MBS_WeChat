@@ -11,6 +11,85 @@ var WechatAPI = require('wechat-api');
 var api = new WechatAPI(process.env.appid,
   process.env.appsecret);
 
+var request = require('request');
+
+var wechatMenu = require('../settings/menu');
+var wechatReply = require('../settings/reply');
+
+
+/**
+ * Use this function to updateMenu
+ *
+ * @author Yitta
+ * @see https://mp.weixin.qq.com/wiki/10/0234e39a2025342c17a7d23595c6b40a.html
+ */
+function updateMenu() {
+
+  //1. Get Access token
+  getAccessToken({
+    success: function (accessToken) {
+
+      //2. 创建表单并发送
+      var menuRequestURL = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=" + accessToken;
+      request.post({
+            url: menuRequestURL,
+            json: true,
+            headers: {
+              "content-type": "application/json"
+            },
+            body: {
+              "button": wechatMenu.buttons
+            }
+          },
+          function (err, httpResponse, body) {
+            if (err != null) {
+              console.log("菜单 EEEEEor ", err);
+            } else {
+              console.log("菜单 Success ");
+            }
+          })
+
+    },
+    error: function (error) {
+
+      console.log("菜单更新 EEEEEor ", error);
+
+    }
+  });
+}
+updateMenu();
+
+/**
+ * Use this function to get AccessToken from WeChat
+ *
+ * @author Yitta
+ * @see https://mp.weixin.qq.com/wiki/11/0e4b294685f817b95cbed85ba5e82b8f.html
+ *
+ * @param callback
+ */
+function getAccessToken(callback) {
+
+  // Get Access token
+  var requestURL = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=" + process.env.appid + "&secret=" + process.env.appsecret;
+  console.log("requestURL", requestURL);
+  request.get({
+        url: requestURL,
+        json: true,
+        headers: {
+          "Content-Type": "application/json"
+        }
+      },
+      function (err, httpResponse, body) {
+        if (err != null) {
+          console.log('公众号授权 error:', err); // Print the error if one occurred
+          callback.error(err);
+        } else {
+          console.log('公众号授权 success, token: ', body.access_token);
+          callback.success(body.access_token);
+        }
+      });
+}
+
 router.use('/', wechat(config).text(function(message, req, res, next) {
   // message为文本内容
   // FromUserName: 'oPKu7jgOibOA-De4u8J2RuNKpZRw',
