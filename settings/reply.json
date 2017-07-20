@@ -1,0 +1,88 @@
+{
+  "keywords": {
+    "韩庚": {
+      "reply": {
+        "type": "image",
+        "content": "你好，大家好才是真的好！"
+      }
+    },
+    "约吗": {
+      "reply": {
+        "type": "text",
+        "content": "不约，不约，叔叔我们不约！"
+      }
+    },
+    "案例": {
+      "reply": {
+        "type": "text",
+        "content": "精品案例：\nhttps://sk8.tech/wp-content/uploads/2017/02/SK8Tech-Company-Portfoliointeractive.pdf"
+      }
+    },
+    "Case": {
+      "reply": {
+        "type": "text",
+        "content": "精品案例：\nhttps://sk8.tech/wp-content/uploads/2017/02/SK8Tech-Company-Portfoliointeractive.pdf"
+      }
+    },
+    "作品": {
+      "reply": {
+        "type": "text",
+        "content": "精品案例：\nhttps://sk8.tech/wp-content/uploads/2017/02/SK8Tech-Company-Portfoliointeractive.pdf"
+      }
+    },
+    "网站": {
+      "reply": {
+        "type": "text",
+        "content": "精品案例：\nhttps://sk8.tech/wp-content/uploads/2017/02/SK8Tech-Company-Portfoliointeractive.pdf"
+      }
+    },
+    "App": {
+      "reply": {
+        "type": "text",
+        "content": "精品案例：\nhttps://sk8.tech/wp-content/uploads/2017/02/SK8Tech-Company-Portfoliointeractive.pdf"
+      }
+    },
+    "联络": {
+      "reply": {
+        "type": "text",
+        "content": "SK8科技\n邮件：hi@sk8.tech\n网址：https://sk8.tech\n微博：weibo.com/sk8tech\n←点击左边就可以联系客服了哦~"
+      }
+    },
+    "联系": {
+      "reply": {
+        "type": "text",
+        "content": "SK8科技\n邮件：hi@sk8.tech\n网址：https://sk8.tech\n微博：weibo.com/sk8tech\n←点击左边就可以联系客服了哦~"
+      }
+    },
+    "电话": {
+      "reply": {
+        "type": "text",
+        "content": "SK8科技\n邮件：hi@sk8.tech\n网址：https://sk8.tech\n微博：weibo.com/sk8tech\n←点击左边就可以联系客服了哦~"
+      }
+    },
+    "邮箱": {
+      "reply": {
+        "type": "text",
+        "content": "SK8科技\n邮件：hi@sk8.tech\n网址：https://sk8.tech\n微博：weibo.com/sk8tech\n←点击左边就可以联系客服了哦~"
+      }
+    },
+    "微博": {
+      "reply": {
+        "type": "text",
+        "content": "SK8科技\n邮件：hi@sk8.tech\n网址：https://sk8.tech\n微博：weibo.com/sk8tech\n←点击左边就可以联系客服了哦~"
+      }
+    },
+    "官网": {
+      "reply": {
+        "type": "text",
+        "content": "SK8科技\n邮件：hi@sk8.tech\n网址：https://sk8.tech\n微博：weibo.com/sk8tech\n←点击左边就可以联系客服了哦~"
+      }
+    },
+    "手机": {
+      "reply": {
+        "type": "text",
+        "content": "SK8科技\n邮件：hi@sk8.tech\n网址：https://sk8.tech\n微博：weibo.com/sk8tech\n←点击左边就可以联系客服了哦~"
+      }
+    }
+  }
+}
