@@ -65,6 +65,12 @@
           }
         },
         {
+          "type": "scancode_push",
+          "name": "扫一扫",
+          "key": "rselfmenu_0_1",
+          "sub_button": [ ]
+        },
+        {
           "type":"click",
           "name":"生活服务",
           "key":"生活服务",
