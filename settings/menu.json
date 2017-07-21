@@ -66,8 +66,7 @@
         },
         {
           "type":"scancode_push",
-          "name":"扫一扫",
-          "key":"扫一扫"
+          "name":"扫一扫"
         },
         {
           "type":"click",
