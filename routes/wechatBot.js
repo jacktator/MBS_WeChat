@@ -212,6 +212,52 @@ router.use('/', wechat(config).text(function(message, req, res, next) {
             }
         }
     }
+
+    if (message.Event == 'subscribe'){
+        console.log("收到新关注", message.FromUserName);
+        getAccessToken({
+            success: function (accessToken) {
+                // 获取用户信息
+                var userRequestURL = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=" + accessToken + "&openid=" + message.FromUserName;
+                request.get({
+                    url: userRequestURL,
+                    json: true,
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                },
+                    function(err, httpResponse, body) {
+                        if (err != null) {
+                            console.log('新关注用户数据 error:', err); // Print the error if one occurred
+                        } else{
+                            console.log('新关注用户数据 statusCode:', httpResponse && httpResponse.statusCode); // Print the response status code if a response was received
+                            console.log('新关注用户数据 body:', body);
+                            //用户名获取
+                            var nickname = body.nickname;
+                            var language = body.language;
+                            var city = body.city;
+                            var province = body.province;
+                            var country = body.country;
+                            var profileImageURL = body.headimgurl;
+                            var openID = body.openid;
+                        }
+                    }
+                )
+                res.reply({
+                    type: "text",
+                    content:"看！又有一个颜值高，萌萌哒的人关注我了呢/色\n\n感谢关注，\n\n我有故事，我有酒，我是一只逼格狗。\n我和你们一样，都是一个萌客Menger。\n\n关注流行，关乎态度，关爱土澳年轻人！\n这里有最新鲜的八卦爆料，以及最有味的生活方式/示爱\n\n更多美食资讯可关注 萌客美食频道微信 MengerFoodie，朋友圈的美食家/咖啡\n澳洲生活需要帮助，及时添加微信 drmeng8，朋友圈的贴身小助手/拥抱/拥抱/拥抱"
+                });
+                
+            },
+            error: function(error) {
+
+                console.log("关注自动回复 EEEEEor ", error);
+
+            }
+        })
+    }
+
+
 }).device_text(function(message, req, res, next) {
   // message为设备文本消息内容
   // { ToUserName: 'gh_d3e07d51b513',
