@@ -234,7 +234,7 @@ router.use('/', wechat(config).text(function(message, req, res, next) {
                         } else{
                             console.log('新关注用户数据 statusCode:', httpResponse && httpResponse.statusCode); // Print the response status code if a response was received
                             // console.log('新关注用户数据 body:', body);
-                            //用户名获取
+                            //用户信息获取
                             var nickname = body.nickname;
                             var language = body.language;
                             var city = body.city;
