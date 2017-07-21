@@ -6,25 +6,21 @@
         {
           "type":"media_id",
           "name":"吃喝 • 玩乐",
-          "key":"吃喝 • 玩乐",
           "media_id": "DRxJu2FnCLSyugvcvwd66xyf7KfRXsvCLrvmiUE5VG4"
         },
         {
           "type":"view",
           "name":"时尚 • 购物",
-          "key":"时尚 • 购物",
           "url": "http://mp.weixin.qq.com/s?__biz=MzI3MDA3OTU0Ng==&mid=502558689&idx=1&sn=e432e5a52ee77e0599438c7430f03b89&chksm=72d64cb445a1c5a2d1ea43f6072e45a66c47a52552d40dc430db0674cf50ab23fef9fc7d0f6e&scene=18#wechat_redirect"
         },
         {
           "type": "view",
           "name": "萌客 • 电影",
-          "key":"萌客 • 电影",
           "url": "http://mp.weixin.qq.com/s?__biz=MzI3MDA3OTU0Ng==&mid=502558686&idx=1&sn=19c749cbc5e6e0392bd4261299c93ae1&chksm=72d64c8b45a1c59dbf7b83ad87d7402bd4295dec7166c92ec7eea81b02fd4eab4d7b245b4c23&scene=18#wechat_redirect"
         },
         {
           "type": "view",
           "name": "萌客 • 百科",
-          "key":"萌客 • 百科",
           "url": "http://mp.weixin.qq.com/s?__biz=MzI3MDA3OTU0Ng==&mid=502559000&idx=1&sn=718f79a3c2a5c353ded2adc68796b85a&chksm=72d6524d45a1db5be7d6f4abf8fbc75fe15d230bcc035d4bce8f1eae12e65c76fdaa3b77f60f&scene=18#wechat_redirect"
         }]
     },
@@ -37,9 +33,9 @@
           "media_id":"DRxJu2FnCLSyugvcvwd66z0SyELyiijlobDTbYZgYTw"
         },
         {
-          "type":"media_id",
+          "type":"click",
           "name":"问买房置业",
-          "media_id":"NzvPmN3IIKkA4tPhABF-wzTvyMBoKdw6MUN4EVSLNMH-297MuacmjgUTI86OUWDq"
+          "key":"NzvPmN3IIKkA4tPhABF-wzTvyMBoKdw6MUN4EVSLNMH-297MuacmjgUTI86OUWDq"
         }]
     },
     {
