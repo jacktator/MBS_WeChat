@@ -11,6 +11,9 @@ var wechat = require('./routes/wechatBot');
 
 var app = express();
 
+var files = express.static( path.join(__dirname,"/")  );  //设置静态资源路径
+app.use(files); //use这个路径设置 才可以 真正使用
+
 // 设置模板引擎
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
