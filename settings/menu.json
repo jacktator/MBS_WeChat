@@ -65,10 +65,6 @@
           }
         },
         {
-          "type":"scancode_push",
-          "name":"扫一扫"
-        },
-        {
           "type":"click",
           "name":"生活服务",
           "key":"生活服务",
