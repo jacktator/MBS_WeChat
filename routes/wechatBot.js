@@ -97,35 +97,22 @@ router.use('/', wechat(config).text(function(message, req, res, next) {
   // MsgType: 'text',
   // Content: 'http',
   // MsgId: '5837397576500011341' }
-  var keyArray = ['你好', '约吗'];
-  var content = message.Content;
-  var keyIndex = keyArray.indexOf(content);
-  switch (keyIndex) {
-    case 0:
-      {
-        res.reply({
-          type: "text",
-          content: '您好，大家好才是真的好！'
-        });
 
-      }
-      break;
-    case 1:
-      {
-        res.reply({
-          type: "text",
-          content: '不约，不约，叔叔我们不约！'
-        });
+    console.log("收到文字消息 ", message.Content);
 
-      }
-      break;
-    default:
-      res.reply({
-        type: "text",
-        content: '服务器挂掉了，你的要求暂时无法满足'
-      });
-      break;
-  }
+    //关键词自动回复
+    var keyword;
+
+    for (keyword in wechatReply.keywords) {
+        if (message.Content.search(keyword) != -1) {
+            var reply = wechatReply.keywords[keyword].reply;
+            res.reply(reply);
+
+            return;
+        }
+    }
+
+    res.reply("感谢亲的留言！！！\n我和你们一样，都是一个萌客Menger\n都在大土澳试图寻找一个梦想归宿/拥抱\n愿我们可以持续彼此分享观点\n告诉我你们的故事\n而我的故事，点击下方菜单即可阅读/爱心");
 }).image(function(message, req, res, next) {
   // message为图片内容
   // { ToUserName: 'gh_d3e07d51b513',
