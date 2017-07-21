@@ -9,6 +9,11 @@
           "media_id": "DRxJu2FnCLSyugvcvwd66xyf7KfRXsvCLrvmiUE5VG4"
         },
         {
+          "type":"media_id",
+          "name":"八卦 • 情感",
+          "media_id": "DRxJu2FnCLSyugvcvwd6635MRqPBFjMN7wauWv0tJ6U"
+        },
+        {
           "type":"view",
           "name":"时尚 • 购物",
           "url": "http://mp.weixin.qq.com/s?__biz=MzI3MDA3OTU0Ng==&mid=502558689&idx=1&sn=e432e5a52ee77e0599438c7430f03b89&chksm=72d64cb445a1c5a2d1ea43f6072e45a66c47a52552d40dc430db0674cf50ab23fef9fc7d0f6e&scene=18#wechat_redirect"
@@ -33,9 +38,9 @@
           "media_id":"DRxJu2FnCLSyugvcvwd66z0SyELyiijlobDTbYZgYTw"
         },
         {
-          "type":"click",
+          "type":"media_id",
           "name":"问买房置业",
-          "key":"NzvPmN3IIKkA4tPhABF-wzTvyMBoKdw6MUN4EVSLNMH-297MuacmjgUTI86OUWDq"
+          "media_id":"DRxJu2FnCLSyugvcvwd662vk_6r2erZd7RX8e7D2IEA"
         }]
     },
     {
