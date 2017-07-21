@@ -216,7 +216,7 @@ router.use('/', wechat(config).text(function(message, req, res, next) {
 
     //订阅事件自动回复
     if (message.Event == 'subscribe'){
-        console.log("收到新关注", message.FromUserName);
+        console.log("收到新关注 ID:", message.FromUserName);
         getAccessToken({
             success: function (accessToken) {
                 // 获取用户信息

@@ -65,12 +65,6 @@
           }
         },
         {
-          "type": "scancode_push",
-          "name": "扫一扫",
-          "key": "rselfmenu_0_1",
-          "sub_button": [ ]
-        },
-        {
           "type":"click",
           "name":"生活服务",
           "key":"生活服务",
@@ -78,6 +72,13 @@
             "type": "text",
             "content": "萌博士旗下目前拥有10个粉丝破千的微信号/拥抱/拥抱/拥抱\n免费发布各种租房，求职，卖闲置，找对象等求助信息\n\n打开微信搜索框，搜索“萌博士互助中心“，找到你朋友圈的贴心小助理，如果没有找到的话，请添加微信  ”Drmeng9 ””Drmeng10 ”随时互动"
           }
+        },
+        {
+
+          "type": "scancode_push",
+          "name": "扫一扫",
+          "key": "rselfmenu_0_1",
+          "sub_button": [ ]
         }]
     }
   ]
