@@ -185,6 +185,7 @@ router.use('/', wechat(config).text(function(message, req, res, next) {
   // Longitude: '113.352425',
   // Precision: '119.385040',
   // MsgId: '5837397520665436492' }
+
     //CLICK事件响应
     //@author Yitta
     //@see https://mp.weixin.qq.com/wiki/7/9f89d962eba4c5924ed95b513ba69d9b.html
@@ -213,6 +214,7 @@ router.use('/', wechat(config).text(function(message, req, res, next) {
         }
     }
 
+    //订阅事件自动回复
     if (message.Event == 'subscribe'){
         console.log("收到新关注", message.FromUserName);
         getAccessToken({
@@ -231,7 +233,7 @@ router.use('/', wechat(config).text(function(message, req, res, next) {
                             console.log('新关注用户数据 error:', err); // Print the error if one occurred
                         } else{
                             console.log('新关注用户数据 statusCode:', httpResponse && httpResponse.statusCode); // Print the response status code if a response was received
-                            console.log('新关注用户数据 body:', body);
+                            // console.log('新关注用户数据 body:', body);
                             //用户名获取
                             var nickname = body.nickname;
                             var language = body.language;
