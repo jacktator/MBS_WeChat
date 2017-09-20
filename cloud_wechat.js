@@ -55,7 +55,7 @@ AV.Cloud.define('fetchWeChatOpenId', async (request, response) => {
       username: openid,
       password: openid,
       email: `${openid}@sk8.tech`,
-      roles: [ NEW_USER_ROLE ],
+      roles: [NEW_USER_ROLE],
       fields: {
         wechatopenid: openid
       }
@@ -93,7 +93,7 @@ AV.Cloud.define('createRoyalPayOrder', async (request, response) => {
     // token 如果不正确，此处会直接抛异常
     const headers = { headers: { Authorization: request.params.token } };
     // 参考 JavaScript 特性 Rename & Destructure Variables, 即将第一个 response.data 重命名为 transaction,第二个同理
-    const [{data: transaction}, { data: payer}] = await Promise.all([
+    const [{ data: transaction }, { data: payer }] = await Promise.all([
       axios.get(`${config.rest_url}/transaction/${request.params.orderId}`, headers),
       axios.get(`${config.rest_url}/users/me?context=edit`, headers)
     ])
@@ -184,6 +184,33 @@ AV.Cloud.define('queryRoyalPayResult', async (request, response) => {
 });
 
 /**
+ * 如果用现金支付，更新订单状态
+ */
+AV.Cloud.define('cashPay', async (request, response) => {
+  if (!request.params.token) {
+    response.error('Token is required.');
+    return;
+  }
+
+  if (!request.params.orderId) {
+    response.error('Order Id is required.');
+    return;
+  }
+
+  try {
+    // 验证 token 合法性
+    const headers = { headers: { Authorization: request.params.token } };
+    const { data: transaction } = await axios.get(`${config.rest_url}/transaction/${request.params.orderId}`, headers);
+
+    // 更新订单
+    const updatedTransaction = await _updateTransactionStatusImplementation(transaction);
+    response.success(updatedTransaction);
+  } catch (err) {
+    response.error(err);
+  }
+});
+
+/**
  * 可以重复调用
  * 默认不检查 token，此函数使用 wp 管理员账号进行操作
  * 错误以异常抛出,在调用函数处用 try...catch 进行处理
@@ -210,16 +237,25 @@ async function updateTransactionStatus(transactionId) {
   const { data: result } = await axios.get(ROYALPAY_QUERY_URL, {})
 
   if (result.return_code === 'SUCCESS' && result.result_code === 'PAY_SUCCESS') {
-    // 开始更新 transaction
-    const res = await axios.post(`${config.rest_url}/transaction/${transactionId}`, { status: 'publish' })
-
-    // 更新 萌币
-
-
-    return res.data;
+    const finalTransaction = await _updateTransactionStatusImplementation(transaction);
+    return finalTransaction;
   } else {
     throw new Error(`${result.return_code} ${result.result_code}`);
   }
+}
+
+/**
+ * 因为 cash 不经过 RoyalPay 查询，因此把真正修改 transaction 跟 coupon 部分分离出来
+ * @param {*} transactionId 
+ */
+async function _updateTransactionStatusImplementation(transaction) {
+  // 更新 萌币
+  console.log(transaction);
+
+  // 开始更新 transaction
+  const res = await axios.post(`${config.rest_url}/transaction/${transaction.id}`, { status: 'publish' })
+
+  return res.data;
 }
 
 module.exports = { updateTransactionStatus }
