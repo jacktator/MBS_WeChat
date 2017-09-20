@@ -8,6 +8,7 @@ const NEW_USER_ROLE = 'author';
 const OAUTH2_ACCESS_TOKEN_BASE = 'https://api.weixin.qq.com/sns/oauth2/access_token?';
 const GRANT_TYPE = 'authorization_code';
 const NOTIFY_URL = 'http://mbs.leanapp.cn/royalpay/paymentCallback'
+const CURRENCY_TYPE = 'AUD'
 
 /**
  * 根据 OAuth2 获取的 code，进行 wp 登录并返回登录信息
@@ -122,7 +123,7 @@ AV.Cloud.define('createRoyalPayOrder', async (request, response) => {
       description: transaction.acf.deal.post_title,
       price: 10,
       // price: price,
-      currency: 'CNY',
+      currency: CURRENCY_TYPE,
       notify_url: NOTIFY_URL,
       operator: 'lean_wechat'
     }
@@ -211,6 +212,10 @@ async function updateTransactionStatus(transactionId) {
   if (result.return_code === 'SUCCESS' && result.result_code === 'PAY_SUCCESS') {
     // 开始更新 transaction
     const res = await axios.post(`${config.rest_url}/transaction/${transactionId}`, { status: 'publish' })
+
+    // 更新 萌币
+
+
     return res.data;
   } else {
     throw new Error(`${result.return_code} ${result.result_code}`);
