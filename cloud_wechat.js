@@ -39,7 +39,7 @@ AV.Cloud.define('fetchWeChatOpenId', async (request, response) => {
     // do nothing, 继续尝试注册
   }
 
-  // 尝试注册
+  // 尝试注册, 注册成功则登录
   try {
     const data = {
       username: openid,
