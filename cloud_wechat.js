@@ -121,7 +121,7 @@ AV.Cloud.define('createRoyalPayOrder', async (request, response) => {
 
     const req_data = {
       description: transaction.acf.deal.post_title,
-      price: 10,
+      price: 1,
       // price: price,
       currency: CURRENCY_TYPE,
       notify_url: NOTIFY_URL,
