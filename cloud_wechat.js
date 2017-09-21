@@ -202,6 +202,12 @@ AV.Cloud.define('cashPay', async (request, response) => {
     const headers = { headers: { Authorization: request.params.token } };
     const { data: transaction } = await axios.get(`${config.rest_url}/transaction/${request.params.orderId}`, headers);
 
+    // 已经支付过了，直接返回
+    if (transaction.status === 'publish') {
+      response.success(transaction);
+      return;
+    }
+
     // 更新订单
     const updatedTransaction = await _updateTransactionStatusImplementation(transaction);
     response.success(updatedTransaction);
@@ -245,12 +251,62 @@ async function updateTransactionStatus(transactionId) {
 }
 
 /**
+ * 不可以重复调用！！！
  * 因为 cash 不经过 RoyalPay 查询，因此把真正修改 transaction 跟 coupon 部分分离出来
+ * 先进行 transaction 操作
+ * 再修改用户 mb
+ * 最后更新订单
  * @param {*} transactionId 
  */
 async function _updateTransactionStatusImplementation(transaction) {
-  // 更新 萌币
-  console.log(transaction);
+  const { data: payer } = await axios.get(`${config.rest_url}/users/${transaction.acf.payer.ID}`);
+  const originalCouponInCent = parseInt(payer.acf.accumulatedmbincent ? payer.acf.accumulatedmbincent : 0);
+
+  // 花费 mb 的 transaction 生成
+  const subedCouponInCent = originalCouponInCent - parseInt(transaction.couponincent ? transaction.couponincent : 0);
+
+  const spendingTransactionFields = {
+    payer: payer.id,
+    balancebefore: originalCouponInCent,
+    balanceafter: subedCouponInCent,
+    recipient: transaction.recipient,
+    totalincent: 0,
+    couponincent: 0,
+    amountincent: 0,
+    paymenttype: transaction.paymenttype,
+    deal: transaction.acf.deal.ID,
+    vendor: transaction.acf.vendor.ID,
+    order: transaction.id,
+  }
+  
+  // 特别注意 acf 更新后并不返回 user 而是 { acf: {} }
+  const [{ data: spendingTransaction }, { data: acfObject }] = await Promise.all([
+    axios.post(`${config.rest_url}/transaction`, { status: 'publish', fields: spendingTransactionFields }),
+    axios.post(`${config.acf_url}/users/${payer.id}`, { fields: { accumulatedmbincent: subedCouponInCent } })
+  ])
+  
+  // 增加 mb 的 transaction 生成
+  const subedOriginalCouponInCent = parseInt(acfObject.acf.accumulatedmbincent ? acfObject.acf.accumulatedmbincent : 0);
+  const amountincent = parseInt(transaction.amountincent ? transaction.amountincent : 0);
+  const addedCouponInCent = subedOriginalCouponInCent + Math.floor(amountincent / 10);
+
+  const accumulatingTransactionFields = {
+    payer: payer.id,
+    balancebefore: subedOriginalCouponInCent,
+    balanceafter: addedCouponInCent,
+    recipient: transaction.recipient,
+    totalincent: 0,
+    couponincent: 0,
+    amountincent: 0,
+    paymenttype: transaction.paymenttype,
+    deal: transaction.acf.deal.ID,
+    vendor: transaction.acf.vendor.ID,
+    order: transaction.id,
+  }
+  const [{ data: accumulatingTransaction }, { data: addedAcfObject }] = await Promise.all([
+    axios.post(`${config.rest_url}/transaction`, { status: 'publish', fields: accumulatingTransactionFields }),
+    axios.post(`${config.acf_url}/users/${payer.id}`, { fields: { accumulatedmbincent: addedCouponInCent }})
+  ]);
 
   // 开始更新 transaction
   const res = await axios.post(`${config.rest_url}/transaction/${transaction.id}`, { status: 'publish' })
