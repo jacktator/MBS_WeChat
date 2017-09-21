@@ -275,8 +275,8 @@ async function _updateTransactionStatusImplementation(transaction) {
 
   const spendingTransactionFields = {
     payer: payer.id,
-    balancebefore: originalCouponInCent,
-    balanceafter: subedCouponInCent,
+    balancebefore: parseInt(originalCouponInCent),
+    balanceafter: parseInt(subedCouponInCent),
     recipient: transaction.recipient,
     totalincent: 0,
     couponincent: 0,
@@ -305,8 +305,8 @@ async function _updateTransactionStatusImplementation(transaction) {
 
   const accumulatingTransactionFields = {
     payer: payer.id,
-    balancebefore: subedOriginalCouponInCent,
-    balanceafter: addedCouponInCent,
+    balancebefore: parseInt(subedOriginalCouponInCent),
+    balanceafter: parseInt(addedCouponInCent),
     recipient: transaction.recipient,
     totalincent: 0,
     couponincent: 0,
@@ -326,10 +326,59 @@ async function _updateTransactionStatusImplementation(transaction) {
     axios.post(`${config.acf_url}/users/${payer.id}`, { fields: { accumulatedmbincent: addedCouponInCent }})
   ]);
 
+  // 更新 vendor 或 deal 相关信息
+  if (transaction.paymenttype === 'cash') {
+    const { data: vendor } = await axios.get(`${config.rest_url}/vendor/${transaction.acf.vendor.ID}`);
+    const monthNum = new Date().getMonth();
+    const monthString = getMonthName(monthNum)
+    const monthKey = `${monthString}cashincent`
+    const originalVendorCashInCent = parseInt(vendor.acf[monthKey] ? vendor.acf[monthKey] : 0);
+    const addedVendorCashInCent = originalVendorCashInCent + amountincent;
+    let data = { fields: {} };
+    data.fields[monthKey] = addedVendorCashInCent;
+    await axios.post(`${config.acf_url}/vendor/${transaction.acf.vendor.ID}`, data);
+  } else if (transaction.paymenttype === 'wechat') {
+    const { data: deal } = await axios.get(`${config.rest_url}/deal/${transaction.acf.deal.ID}`);
+    const originalDealAccumulatedTotalInCent = parseInt(deal.accumulatedtotalincent ? deal.accumulatedtotalincent : 0);
+    const originalDealAccumulatedCouponInCent = parseInt(deal.accumulatedcouponincent ? deal.accumulatedcouponincent : 0);
+    const originalDealAccumulatedAmountInCent = parseInt(deal.accumulatedamountincent ? deal.accumulatedamountincent : 0);
+    
+    const addedDealAccumulatedTotalInCent = originalDealAccumulatedTotalInCent + parseInt(transaction.totalincent ? transaction.totalincent : 0);
+    const addedDealAccumulatedCouponInCent = originalDealAccumulatedCouponInCent + parseInt(transaction.couponincent ? transaction.couponincent : 0);
+    const addedDealAccumulatedAmountInCent = originalDealAccumulatedAmountInCent + parseInt(transaction.amountincent ? transaction.amountincent : 0);
+
+    let data = { 
+      fields: {
+        accumulatedtotalincent: addedDealAccumulatedTotalInCent,
+        accumulatedcouponincent: addedDealAccumulatedCouponInCent,
+        accumulatedamountincent: addedDealAccumulatedAmountInCent,
+      }
+    }
+    await axios.post(`${config.acf_url}/deal/${transaction.acf.deal.ID}`, data);
+  }
+
   // 开始更新 transaction
   const res = await axios.post(`${config.rest_url}/transaction/${transaction.id}`, { status: 'publish' })
 
   return res.data;
+}
+
+function getMonthName(num) {
+  switch (num) {
+    case 0: return 'january';
+    case 1: return 'february';
+    case 2: return 'march';
+    case 3: return 'april';
+    case 4: return 'may';
+    case 5: return 'june';
+    case 6: return 'july';
+    case 7: return 'august';
+    case 8: return 'september';
+    case 9: return 'october';
+    case 10: return 'november';
+    case 11: return 'december';
+    default: throw new Error('Invalide month number');
+  }
 }
 
 module.exports = { updateTransactionStatus }
