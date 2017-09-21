@@ -116,7 +116,7 @@ AV.Cloud.define('createRoyalPayOrder', async (request, response) => {
     }
 
     // 最少扣费 2 元
-    // let price = transaction.acf.amountincent - couponincent;
+    // let price = parseInt(transaction.acf.amountincent ? transaction.acf.amountincent : 0);
     // if (price < 200) {
     //   price = 200;
     // }
