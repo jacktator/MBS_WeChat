@@ -10,6 +10,14 @@ const GRANT_TYPE = 'authorization_code';
 const NOTIFY_URL = 'http://mbs.leanapp.cn/royalpay/paymentCallback'
 const CURRENCY_TYPE = 'AUD'
 
+const TransactionCategoryType = {
+  Spending: 13,
+  Withdrawal: 14,
+  Debit: 28,
+  Accumulate: 15,
+  TopUp: 12,
+}
+
 /**
  * 根据 OAuth2 获取的 code，进行 wp 登录并返回登录信息
  * 先尝试登录
@@ -281,7 +289,12 @@ async function _updateTransactionStatusImplementation(transaction) {
   
   // 特别注意 acf 更新后并不返回 user 而是 { acf: {} }
   const [{ data: spendingTransaction }, { data: acfObject }] = await Promise.all([
-    axios.post(`${config.rest_url}/transaction`, { status: 'publish', fields: spendingTransactionFields }),
+    axios.post(`${config.rest_url}/transaction`, {
+      title: `${transaction.title.rendered} 扣除萌币`,
+      status: 'publish', 
+      categories: [TransactionCategoryType.Spending], 
+      fields: spendingTransactionFields 
+    }),
     axios.post(`${config.acf_url}/users/${payer.id}`, { fields: { accumulatedmbincent: subedCouponInCent } })
   ])
   
@@ -304,7 +317,12 @@ async function _updateTransactionStatusImplementation(transaction) {
     order: transaction.id,
   }
   const [{ data: accumulatingTransaction }, { data: addedAcfObject }] = await Promise.all([
-    axios.post(`${config.rest_url}/transaction`, { status: 'publish', fields: accumulatingTransactionFields }),
+    axios.post(`${config.rest_url}/transaction`, {
+      title: `${transaction.title.rendered} 奖励萌币`,
+      status: 'publish', 
+      categories: [TransactionCategoryType.Accumulate], 
+      fields: accumulatingTransactionFields 
+    }),
     axios.post(`${config.acf_url}/users/${payer.id}`, { fields: { accumulatedmbincent: addedCouponInCent }})
   ]);
 
