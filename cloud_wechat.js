@@ -115,11 +115,11 @@ AV.Cloud.define('createRoyalPayOrder', async (request, response) => {
       throw new Error('Not enough MB');
     }
 
-    // 最少扣费 2 元
-    // let price = parseInt(transaction.acf.amountincent ? transaction.acf.amountincent : 0);
-    // if (price < 200) {
-    //   price = 200;
-    // }
+    //最少扣费 2 元
+    let price = parseInt(transaction.acf.amountincent ? transaction.acf.amountincent : 0);
+    if (price < 200) {
+      price = 200;
+    }
 
     // 访问 RoyalPay 创建订单
     const time = new Date().getTime();
@@ -129,8 +129,8 @@ AV.Cloud.define('createRoyalPayOrder', async (request, response) => {
 
     const req_data = {
       description: transaction.acf.deal.post_title,
-      price: 1,
-      // price: price,
+      // price: 1,
+      price: price,
       currency: CURRENCY_TYPE,
       notify_url: NOTIFY_URL,
       operator: 'lean_wechat'
