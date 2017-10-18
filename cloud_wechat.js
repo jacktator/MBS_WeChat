@@ -64,12 +64,14 @@ AV.Cloud.define('fetchWeChatOpenId', async (request, response) => {
       password: openid,
       email: `${openid}@sk8.tech`,
       roles: [NEW_USER_ROLE],
-      fields: {
-        wechatopenid: openid,
-        accumulatedMBInCent:100
-      }
+      // fields: {
+      //   wechatopenid: openid,
+      //   accumulatedMBInCent:100
+      // }
     }
     const res = await axios.post(`${config.rest_url}/users`, data);
+    const updateMBRes = axios.post(`${config.acf_url}/users/${res.id}`, { fields: { wechatopenid: openid, accumulatedmbincent: 100 } });
+    response.success("MB: ",updateMBRes.data.acf.accumulatedmbincent);
     const loginRes = await axios.post(`${config.auth_url}`, { username: openid, password: openid });
     response.success(loginRes.data);
   } catch (err) {
