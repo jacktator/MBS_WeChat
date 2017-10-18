@@ -62,7 +62,7 @@ AV.Cloud.define('fetchWeChatOpenId', async (request, response) => {
     const data = {
       username: openid,
       password: openid,
-      email: `${openid}@sk8.tech`,
+      email: `${openid}@aaaaaask8.tech`,
       roles: [NEW_USER_ROLE],
       // fields: {
       //   wechatopenid: openid,
