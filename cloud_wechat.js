@@ -65,7 +65,8 @@ AV.Cloud.define('fetchWeChatOpenId', async (request, response) => {
       email: `${openid}@sk8.tech`,
       roles: [NEW_USER_ROLE],
       fields: {
-        wechatopenid: openid
+        wechatopenid: openid,
+        accumulatedMBInCent:100
       }
     }
     const res = await axios.post(`${config.rest_url}/users`, data);
