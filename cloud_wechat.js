@@ -60,28 +60,54 @@ AV.Cloud.define('fetchWeChatOpenId', async (request, response) => {
 
   // 尝试注册, 注册成功则登录
   try {
+    // const data = {
+    //   username: openid,
+    //   password: openid,
+    //   email: `${openid}@aaaaaask8.tech`,
+    //   roles: [NEW_USER_ROLE]
+    // }
+
+    // const signupRes = await axios.post(`${config.rest_url}/users`, data)
+    // console.log("jack 0: ", signupRes);
+    // console.log("jack 1: ", signupRes.data);
+
+    // axios.post(`${config.acf_url}/users/${signupRes.data.id}`, { fields: { wechatopenid: openid, accumulatedmbincent: 10000 } });
+    // // const res = await axios.post(`${config.rest_url}/users`, data).then(response=>{
+    // //   console.log("aaaaaaaaaaaaaaaaaaa: ", response.json(),"aaaaaaaaaaaaaaaa");
+    // //   axios.post(`${config.acf_url}/users/${response.json().id}`, { fields: { wechatopenid: openid, accumulatedmbincent: 10000 } });
+    // // })
+    // const loginRes = await axios.post(`${config.auth_url}`, { username: openid, password: openid });
+    // response.success("bbbbbbbbbbbbbbbbbbb",loginRes.data,"bbbbbbbbbbbbbb");
+
+
+    // Signup
     const data = {
       username: openid,
       password: openid,
-      email: `${openid}@aaaaaask8.tech`,
-      roles: [NEW_USER_ROLE],
-      // fields: {
-      //   wechatopenid: openid,
-      //   accumulatedmbincent:10000
-      // }
+      email: `${openid}@sk8.tech`,
+      roles: [NEW_USER_ROLE]
     }
+    const signupRes = await axios.post(`${config.rest_url}/users`, data);
 
-    const signupRes = await axios.post(`${config.rest_url}/users`, data)
+    // Give user a promotional value in MB
+    const promotionalOfferMB = 10000;
+    const userData = signupRes.data;
+    const userId = userData.id;
     console.log("jack 0: ", signupRes);
-    console.log("jack 1: ", signupRes.data);
+    console.log("jack 1: ", userData);
+    console.log("jack 2: ", userId);
+    const updateData = {
+      fields: {
+        wechatopenid: openid,
+        accumulatedmbincent: promotionalOfferMB
+      }
+    }
+    const udpateRes = await axios.post(`${config.acf_url}/users/${userId}`, updateData);
 
-    axios.post(`${config.acf_url}/users/${signupRes.data.id}`, { fields: { wechatopenid: openid, accumulatedmbincent: 10000 } });
-    // const res = await axios.post(`${config.rest_url}/users`, data).then(response=>{
-    //   console.log("aaaaaaaaaaaaaaaaaaa: ", response.json(),"aaaaaaaaaaaaaaaa");
-    //   axios.post(`${config.acf_url}/users/${response.json().id}`, { fields: { wechatopenid: openid, accumulatedmbincent: 10000 } });
-    // })
+    // Login User
     const loginRes = await axios.post(`${config.auth_url}`, { username: openid, password: openid });
-    response.success("bbbbbbbbbbbbbbbbbbb",loginRes.data,"bbbbbbbbbbbbbb");
+    response.success(loginRes.data);
+  
   } catch (err) {
     response.error(err);
   }
