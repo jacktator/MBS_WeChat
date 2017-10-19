@@ -60,26 +60,6 @@ AV.Cloud.define('fetchWeChatOpenId', async (request, response) => {
 
   // 尝试注册, 注册成功则登录
   try {
-    // const data = {
-    //   username: openid,
-    //   password: openid,
-    //   email: `${openid}@aaaaaask8.tech`,
-    //   roles: [NEW_USER_ROLE]
-    // }
-
-    // const signupRes = await axios.post(`${config.rest_url}/users`, data)
-    // console.log("jack 0: ", signupRes);
-    // console.log("jack 1: ", signupRes.data);
-
-    // axios.post(`${config.acf_url}/users/${signupRes.data.id}`, { fields: { wechatopenid: openid, accumulatedmbincent: 10000 } });
-    // // const res = await axios.post(`${config.rest_url}/users`, data).then(response=>{
-    // //   console.log("aaaaaaaaaaaaaaaaaaa: ", response.json(),"aaaaaaaaaaaaaaaa");
-    // //   axios.post(`${config.acf_url}/users/${response.json().id}`, { fields: { wechatopenid: openid, accumulatedmbincent: 10000 } });
-    // // })
-    // const loginRes = await axios.post(`${config.auth_url}`, { username: openid, password: openid });
-    // response.success("bbbbbbbbbbbbbbbbbbb",loginRes.data,"bbbbbbbbbbbbbb");
-
-
     // Signup
     const data = {
       username: openid,
