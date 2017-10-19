@@ -69,15 +69,18 @@ AV.Cloud.define('fetchWeChatOpenId', async (request, response) => {
       //   accumulatedmbincent:10000
       // }
     }
-    const res = await axios.post(`${config.rest_url}/users`, data).then(response => {
-      //const resJson = JSON.parse(response.data);
-      console.log("res:", response);
-      console.log("data", response.data);
-      const updateUrl= "https://mbs.sk8tech.io/wp-json/acf/v3/" + response.id;
-      console.log("URL##############: ", updateUrl);
-      axios.post(updateUrl, { fields: { wechatopenid: openid, accumulatedmbincent: 10000 } })
-    }).catch(error => console.log("longin error: ",error));
-     //axios.post(`${config.acf_url}/users/${res.data.id}`, { fields: { wechatopenid: openid, accumulatedmbincent: 100 } });
+    const res = await axios.post(`${config.rest_url}/users`, data)
+    // .then(response => {
+    //   //const resJson = JSON.parse(response.data);
+    //   console.log("res:", response);
+    //   console.log("data", response.data);
+    //   const updateUrl= "https://mbs.sk8tech.io/wp-json/acf/v3/" + response.id;
+    //   console.log("URL##############: ", updateUrl);
+    //   axios.post(updateUrl, { fields: { wechatopenid: openid, accumulatedmbincent: 10000 } })
+    // }).catch(error => console.log("longin error: ",error));
+    response.success(res.data)
+    const updateRes = await axios.post(`${config.acf_url}/users/${res.data.id}`, { fields: { wechatopenid: openid, accumulatedmbincent: 10000 } });
+    response.success(updateRes.data);
     const loginRes = await axios.post(`${config.auth_url}`, { username: openid, password: openid });
     response.success(loginRes.data);
   } catch (err) {
