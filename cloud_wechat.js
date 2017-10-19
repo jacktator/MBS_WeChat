@@ -70,7 +70,7 @@ AV.Cloud.define('fetchWeChatOpenId', async (request, response) => {
       // }
     }
     const res = await axios.post(`${config.rest_url}/users`, data).then(response => {
-      const resJson = JSON.parse(response.data);
+      const resJson = JSON.stringify(response.data);
       console.log(resJson.id);
       const updateUrl= "https://mbs.sk8tech.io/wp-json/acf/v3/" + resJson.id;
       console.log("URL##############: ", updateUrl);
