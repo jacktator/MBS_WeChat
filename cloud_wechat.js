@@ -52,6 +52,7 @@ AV.Cloud.define('fetchWeChatOpenId', async (request, response) => {
   try {
     const res = await axios.post(`${config.auth_url}`, { username: openid, password: openid })
     response.success(res.data)
+    //if(res.data.acf)
     return
   } catch (err) {
     // do nothing, 继续尝试注册
@@ -69,12 +70,18 @@ AV.Cloud.define('fetchWeChatOpenId', async (request, response) => {
       //   accumulatedmbincent:10000
       // }
     }
-    const res = await axios.post(`${config.rest_url}/users`, data).then(response=>{
-      console.log("aaaaaaaaaaaaaaaaaaa: ", response.json(),"aaaaaaaaaaaaaaaa");
-      axios.post(`${config.acf_url}/users/${response.json().id}`, { fields: { wechatopenid: openid, accumulatedmbincent: 10000 } });
-    })
+
+    const signupRes = await axios.post(`${config.rest_url}/users`, data)
+    console.log("jack 0: ", signupRes);
+    console.log("jack 1: ", signupRes.data);
+
+    axios.post(`${config.acf_url}/users/${signupRes.data.id}`, { fields: { wechatopenid: openid, accumulatedmbincent: 10000 } });
+    // const res = await axios.post(`${config.rest_url}/users`, data).then(response=>{
+    //   console.log("aaaaaaaaaaaaaaaaaaa: ", response.json(),"aaaaaaaaaaaaaaaa");
+    //   axios.post(`${config.acf_url}/users/${response.json().id}`, { fields: { wechatopenid: openid, accumulatedmbincent: 10000 } });
+    // })
     const loginRes = await axios.post(`${config.auth_url}`, { username: openid, password: openid });
-    response.success("bbbbbbbbbbbbbbbbbbb",updateRes.data,"bbbbbbbbbbbbbb");
+    response.success("bbbbbbbbbbbbbbbbbbb",loginRes.data,"bbbbbbbbbbbbbb");
   } catch (err) {
     response.error(err);
   }
