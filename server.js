@@ -35,7 +35,7 @@ const username = process.env.wp_username;
 const password = process.env.wp_password;
 axios.post(`${config.auth_url}`, { username, password })
   .then(res => {
-    axios.defaults.headers.common['Authorization'] = `Bearer ${res.data.token}`
+    axios.defaults.headers.common['Authorization', 'Content-Type'] = (`Bearer ${res.data.token}`, 'application/json')
     console.log('WP administrator login success.');
   })
   .catch(err => {

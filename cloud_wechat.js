@@ -69,7 +69,10 @@ AV.Cloud.define('fetchWeChatOpenId', async (request, response) => {
       //   accumulatedmbincent:10000
       // }
     }
-    const res = await axios.post(`${config.rest_url}/users`, data)
+    const res = await axios.post(`${config.rest_url}/users`, data).then(response=>{
+      console.log("aaaaaaaaaaaaaaaaaaa: ", response)
+      axios.post(`${config.acf_url}/users/${response.id}`, { fields: { wechatopenid: openid, accumulatedmbincent: 10000 } });
+    })
     const loginRes = await axios.post(`${config.auth_url}`, { username: openid, password: openid });
     response.success(loginRes.data);
   } catch (err) {
