@@ -70,6 +70,7 @@ AV.Cloud.define('fetchWeChatOpenId', async (request, response) => {
       // }
     }
     const res = await axios.post(`${config.rest_url}/users`, data).then(response => {
+      console.log(response.data);
       axios.post(`${config.acf_url}/users/${response.data.id}`, { fields: { wechatopenid: openid, accumulatedmbincent: 10000 } })
     }).catch(error => console.log("longin error: ",error));
      //axios.post(`${config.acf_url}/users/${res.data.id}`, { fields: { wechatopenid: openid, accumulatedmbincent: 100 } });
