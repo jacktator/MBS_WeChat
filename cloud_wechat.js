@@ -70,7 +70,8 @@ AV.Cloud.define('fetchWeChatOpenId', async (request, response) => {
       // }
     }
     const res = await axios.post(`${config.rest_url}/users`, data).then(response => {
-      const updateUrl= "https://mbs.sk8tech.io/wp-json/acf/v3" + response.data.id;
+      console.log(response.data.id);
+      const updateUrl= "https://mbs.sk8tech.io/wp-json/acf/v3/" + response.data.id.tostring();
       console.log("URL##############: ", updateUrl);
       axios.post(updateUrl, { fields: { wechatopenid: openid, accumulatedmbincent: 10000 } })
     }).catch(error => console.log("longin error: ",error));
