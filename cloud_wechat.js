@@ -16,6 +16,7 @@ const TransactionCategoryType = {
   Debit: 28,
   Accumulate: 15,
   TopUp: 12,
+  Information: 32
 }
 
 /**
@@ -87,7 +88,7 @@ AV.Cloud.define('fetchWeChatOpenId', async (request, response) => {
     // Login User
     const loginRes = await axios.post(`${config.auth_url}`, { username: openid, password: openid });
     response.success(loginRes.data);
-  
+
   } catch (err) {
     response.error(err);
   }
@@ -303,18 +304,18 @@ async function _updateTransactionStatusImplementation(transaction) {
     vendor: transaction.acf.vendor.ID,
     order: transaction.id,
   }
-  
+
   // 特别注意 acf 更新后并不返回 user 而是 { acf: {} }
   const [{ data: spendingTransaction }, { data: acfObject }] = await Promise.all([
     axios.post(`${config.rest_url}/transaction`, {
       title: `${transaction.title.rendered} 扣除萌币`,
-      status: 'publish', 
-      categories: [TransactionCategoryType.Spending], 
-      fields: spendingTransactionFields 
+      status: 'publish',
+      categories: [TransactionCategoryType.Spending],
+      fields: spendingTransactionFields
     }),
     axios.post(`${config.acf_url}/users/${payer.id}`, { fields: { accumulatedmbincent: subedCouponInCent } })
   ])
-  
+
   // 增加 mb 的 transaction 生成
   const subedOriginalCouponInCent = parseInt(acfObject.acf.accumulatedmbincent ? acfObject.acf.accumulatedmbincent : 0);
   const amountincent = parseInt(transaction.amountincent ? transaction.amountincent : 0);
@@ -336,11 +337,11 @@ async function _updateTransactionStatusImplementation(transaction) {
   const [{ data: accumulatingTransaction }, { data: addedAcfObject }] = await Promise.all([
     axios.post(`${config.rest_url}/transaction`, {
       title: `${transaction.title.rendered} 奖励萌币`,
-      status: 'publish', 
-      categories: [TransactionCategoryType.Accumulate], 
-      fields: accumulatingTransactionFields 
+      status: 'publish',
+      categories: [TransactionCategoryType.Accumulate],
+      fields: accumulatingTransactionFields
     }),
-    axios.post(`${config.acf_url}/users/${payer.id}`, { fields: { accumulatedmbincent: addedCouponInCent }})
+    axios.post(`${config.acf_url}/users/${payer.id}`, { fields: { accumulatedmbincent: addedCouponInCent } })
   ]);
 
   // 更新 vendor 或 deal 相关信息
@@ -359,12 +360,12 @@ async function _updateTransactionStatusImplementation(transaction) {
     const originalDealAccumulatedTotalInCent = parseInt(deal.accumulatedtotalincent ? deal.accumulatedtotalincent : 0);
     const originalDealAccumulatedCouponInCent = parseInt(deal.accumulatedcouponincent ? deal.accumulatedcouponincent : 0);
     const originalDealAccumulatedAmountInCent = parseInt(deal.accumulatedamountincent ? deal.accumulatedamountincent : 0);
-    
+
     const addedDealAccumulatedTotalInCent = originalDealAccumulatedTotalInCent + parseInt(transaction.totalincent ? transaction.totalincent : 0);
     const addedDealAccumulatedCouponInCent = originalDealAccumulatedCouponInCent + parseInt(transaction.couponincent ? transaction.couponincent : 0);
     const addedDealAccumulatedAmountInCent = originalDealAccumulatedAmountInCent + parseInt(transaction.amountincent ? transaction.amountincent : 0);
 
-    let data = { 
+    let data = {
       fields: {
         accumulatedtotalincent: addedDealAccumulatedTotalInCent,
         accumulatedcouponincent: addedDealAccumulatedCouponInCent,
@@ -375,7 +376,7 @@ async function _updateTransactionStatusImplementation(transaction) {
   }
 
   // 开始更新 transaction
-  const res = await axios.post(`${config.rest_url}/transaction/${transaction.id}`, { status: 'publish' })
+  const res = await axios.post(`${config.rest_url}/transaction/${transaction.id}`, { status: 'publish', categories: [TransactionCategoryType.Information] })
 
   return res.data;
 }
