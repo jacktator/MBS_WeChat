@@ -1,5 +1,6 @@
 var router = require('express').Router();
 // 引用 wechat 库，详细请查看 https://github.com/node-webot/wechat
+// 2017-11-16 公众号迁移，需要修改leancloud上的encodingAESKey
 var wechat = require('wechat');
 var config = {
   token: process.env.token,
