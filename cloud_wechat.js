@@ -44,6 +44,7 @@ AV.Cloud.define('fetchWeChatOpenId', async (request, response) => {
   try {
     const res = await axios.get(OAUTH2_ACCESS_TOKEN_URL);
     openid = res.data.openid;
+    console.log("yitta:",openid);
   } catch (error) {
     response.error(e);
     return;
