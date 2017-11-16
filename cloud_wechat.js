@@ -38,7 +38,7 @@ AV.Cloud.define('fetchWeChatOpenId', async (request, response) => {
     return;
   }
 
-  const OAUTH2_ACCESS_TOKEN_URL = `${OAUTH2_ACCESS_TOKEN_BASE}appid=${process.env.wechat_app_id}&secret=${process.env.official_app_secret}&code=${request.params.code}&grant_type=${GRANT_TYPE}`;
+  const OAUTH2_ACCESS_TOKEN_URL = `${OAUTH2_ACCESS_TOKEN_BASE}appid=${process.env.wechat_app_id}&secret=${process.env.appsecret}&code=${request.params.code}&grant_type=${GRANT_TYPE}`;
 
   let openid;
   try {
